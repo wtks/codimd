@@ -2,8 +2,7 @@ FROM node:11.15.0-alpine
 
 WORKDIR /hackmd
 EXPOSE 3000
-ENV NODE_ENV="production" \
-    CMD_SOURCE_URL="https://github.com/wtks/codimd"
+ENV NODE_ENV="production"
 
 RUN apk add --no-cache ca-certificates
 
@@ -15,4 +14,4 @@ RUN apk add --no-cache --virtual .dep build-base python git bash && \
     yarn cache clean && \
     apk del .dep
 
-ENTRYPOINT ["node", "app.js"]
+ENTRYPOINT ["npm", "run", "start"]
